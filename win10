@@ -46,7 +46,9 @@ else
 	exit 0
 fi
 if [ ${SMP:7:99} != "none" ]; then
-	SMP1=" -smp ${SMP:7:99}"
+	SMP2=${SMP:7:99}
+	SMP3=$((SMP2-4))
+	SMP1=" -smp ${SMP3}"
 else
 	SMP1=""
 fi
