@@ -75,37 +75,37 @@ if [ ${MONITOR:11:99} != "none" ]; then
 else
 	MONITOR1=""
 fi
-if [[ ${USB11:7:99} != "none" ]]; then
+if [ ${USB11:7:99} != "none" ]; then
 	USB11=" -device ${USB1:7:99}"
 else
 	USB11=""
 fi
-if [[ ${USB21:7:99} != "none" ]]; then
+if [ ${USB21:7:99} != "none" ]; then
 	USB21=" -device ${USB2:7:99}"
 else
 	USB21=""
 fi
-if [ ${HDA:7:99} != "none" ]; then
+if [ ${HDA:7:99} != "none" ] 2> /dev/null; then
 	HDA1=" -drive file=${HDA:7:99},format=raw,index=0,media=disk"
 else
 	HDA1=""
 fi
-if [ ${HDB:7:99} != "none" ]; then
+if [ ${HDB:7:99} != "none" ] 2> /dev/null; then
 	HDB1=" -hdb ${HDB:7:99}"
 else
 	HDB1=""
 fi
-if [ ${HDC:7:99} != "none" ]; then
+if [ ${HDC:7:99} != "none" ] 2> /dev/null; then
 	HDC1=" -hdc ${HDC:7:99}"
 else
 	HDC1=""
 fi
-if [ ${HDD:7:99} != "none" ]; then
-	HDD1=" -hda ${HDD:7:99}"
+if [ ${HDD:7:99} != "none" ] 2> /dev/null; then
+	HDD1=" -hdd ${HDD:7:99}"
 else
 	HDD1=""
 fi
-if [ ${CDROM:9:99} != "none" ]; then
+if [ ${CDROM:9:99} != "none" ] 2> /dev/null; then
 	CDROM1=" -cdrom ${CDROM:9:99}"
 else
 	CDROM1=""
@@ -139,5 +139,5 @@ else
 	echo ""
 	exit 0
 fi
-cd ${DIRECTORY1} 2> /dev/null
+cd ${DIRECTORY1}
 qemu-system-aarch64${TYPE1}${RAM1}${CPU1}${SMP1}${VGA1}${MONITOR1}${USB11}${USB21}${HDA1}${HDB1}${HDC1}${HDD1}${CDROM1}${BOOT1}${VNC1}${MOUSE1}${BIOS1}${THREADS1}
