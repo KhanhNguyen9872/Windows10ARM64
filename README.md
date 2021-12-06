@@ -1,7 +1,7 @@
 # Windows10ARM64
 Run Windows10 ARM64 on Android Device
 # How to install?
-1. Go to Package -> Download install-win10.sh file
+1. Go to Release -> Download install-win10.sh file
 2. Download and install Termux in FDroid
 3. Open Termux, type 'termux-setup-storage'
 4. And then type 'bash /sdcard/Download/install-win10.sh'
