@@ -11,21 +11,21 @@ pkg update -y && pkg upgrade -y && pkg install wget tar qemu-system-aarch64-head
 # Download base and sha512sum
 clear
 cd 2> /dev/null
-printf "\n${light_cyan} - Dang tai ve....(2.5GB)${green}\n"
+printf "\n\n${light_cyan} - Dang tai ve....(2.54GB)${green}\n\n"
 wget -O base_arm64-khanhnguyen.tar.xz "https://cdn-104.anonfiles.com/13D4q8mbv6/739a1420-1638777742/base_arm64-khanhnguyen.tar.xz"
 wget -O base_arm64-khanhnguyen.sha512sum "https://github.com/KhanhNguyen9872/Windows10ARM64/releases/download/Win10ARM64Base/base_arm64-khanhnguyen.sha512sum" 2> /dev/null
 # Verify base file
 clear
-printf "\n${light_cyan} - Dang kiem tra file cai dat.....${green}\n"
+printf "\n\n${light_cyan} - Dang kiem tra file cai dat.....${green}\n\n"
 sha512sum -c base_arm64-khanhnguyen.sha512sum || {
-            printf "${red} File cai dat bi hong. Vui long cai lai \n${reset}"
+            printf "${red} File cai dat bi hong. Vui long cai lai \n\n${reset}"
 			rm -f base_arm64-khanhnguyen.tar.xz 2> /dev/null
 			rm -f win10 2> /dev/null
 			rm -f base_arm64-khanhnguyen.sha512sum 2> /dev/null
             exit 1
 }
 # Install
-printf "\n${light_cyan} - Dang cai dat! Vui long cho.....${green}\n"
+printf "\n\n${light_cyan} - Dang cai dat! Vui long cho.....${green}\n\n"
 rm -f base_arm64-khanhnguyen.sha512sum 2> /dev/null
 if [ -f base_arm64-khanhnguyen.tar.xz ] 2> /dev/null; then
 	tar -xJf base_arm64-khanhnguyen.tar.xz 2> /dev/null || :
@@ -37,7 +37,7 @@ fi
 cd 2> /dev/null
 wget -O win10 "https://raw.githubusercontent.com/KhanhNguyen9872/Windows10ARM64/main/win10" 2> /dev/null
 # Configuring base
-printf "\n${light_cyan} - Configuring base.....${green}\n"
+printf "\n\n${light_cyan} - Configuring base.....${green}\n\n"
 mv win10 ${PREFIX}/bin/win10 2> /dev/null
 chmod 777 ${PREFIX}/bin/win10 2> /dev/null
 chmod 777 base_arm64 2> /dev/null
