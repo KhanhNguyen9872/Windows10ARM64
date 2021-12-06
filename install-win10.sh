@@ -64,6 +64,7 @@ else
 	printf "\n ${red} - INSTALL FAILED!\n"
 	printf "${light_cyan} Please try again!\n"
 	rm -f ${PREFIX}/bin/win10 2> /dev/null
+	rm -rf base_arm64 2> /dev/null
 	exit 1
 fi
 
