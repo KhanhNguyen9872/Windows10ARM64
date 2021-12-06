@@ -45,7 +45,9 @@ else
 	echo ""
 	exit 0
 fi
-if [ ${SMP:7:99} != "none" ]; then
+if [[ ${SMP:7:99} -eq "1" ]] || [[ ${SMP:7:99} -eq "0" ]]; then
+	SMP1=" -smp 1"
+else
 	SMP2=${SMP:7:99}
 	if [[ $SMP2 -eq 1 ]]; then
 		SMP3=${SMP2}
@@ -53,8 +55,6 @@ if [ ${SMP:7:99} != "none" ]; then
 		SMP3=$((SMP2/2))
 	fi
 	SMP1=" -smp ${SMP3}"
-else
-	SMP1=""
 fi
 if [ ${VGA:7:99} != "none" ]; then
 	VGA1=" -device ${VGA:7:99}"
