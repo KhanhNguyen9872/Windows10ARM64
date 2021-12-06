@@ -139,5 +139,6 @@ else
 	echo ""
 	exit 0
 fi
+cd 2> /dev/null
 cd ${DIRECTORY1}
 qemu-system-aarch64${TYPE1}${RAM1}${CPU1}${SMP1}${VGA1}${MONITOR1}${USB11}${USB21}${HDA1}${HDB1}${HDC1}${HDD1}${CDROM1}${BOOT1}${VNC1}${MOUSE1}${BIOS1}${THREADS1}
