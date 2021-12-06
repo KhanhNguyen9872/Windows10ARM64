@@ -114,11 +114,6 @@ if [ ${CDROM:6:99} != "none" ] 2> /dev/null; then
 else
 	CDROM1=""
 fi
-if [[ ${BOOT:5:99} != "c" ]]; then
-	BOOT1=" -boot c"
-else
-	BOOT1=" -boot c"
-fi
 if [ ${VNC:4:99} != "none" ]; then
 	VNC1=" -vnc ${VNC:4:99}"
 else
