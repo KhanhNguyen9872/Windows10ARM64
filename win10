@@ -3,52 +3,52 @@
 # MAIN Grep config
 cd 2> /dev/null
 if [ -f base_arm64/khanh/qemu.conf ] 2> /dev/null; then
-	DIRECTORY="$(grep -rnw 'base_arm64/khanh/qemu.conf' -e 'DIRECTORY')"
-	BIOS="$(grep -rnw 'base_arm64/khanh/qemu.conf' -e 'BIOS')"
-	CPU="$(grep -rnw 'base_arm64/khanh/qemu.conf' -e 'CPU')"
-	RAM="$(grep -rnw 'base_arm64/khanh/qemu.conf' -e 'RAM')"
-	VGA="$(grep -rnw 'base_arm64/khanh/qemu.conf' -e 'VGA')"
-	SMP="$(grep -rnw 'base_arm64/khanh/qemu.conf' -e 'SMP')"
-	MONITOR="$(grep -rnw 'base_arm64/khanh/qemu.conf' -e 'MONITOR')"
-	VNC="$(grep -rnw 'base_arm64/khanh/qemu.conf' -e 'VNC')"
-	THREADS="$(grep -rnw 'base_arm64/khanh/qemu.conf' -e 'THREADS')"
-	TYPE="$(grep -rnw 'base_arm64/khanh/qemu.conf' -e 'TYPE')"
-	MOUSE="$(grep -rnw 'base_arm64/khanh/qemu.conf' -e 'MOUSE')"
-	USB1="$(grep -rnw 'base_arm64/khanh/qemu.conf' -e 'USB1')"
-	USB2="$(grep -rnw 'base_arm64/khanh/qemu.conf' -e 'USB2')"
-	HDA="$(grep -rnw 'base_arm64/khanh/qemu.conf' -e 'HDA')"
-	HDB="$(grep -rnw 'base_arm64/khanh/qemu.conf' -e 'HDB')"
-	HDC="$(grep -rnw 'base_arm64/khanh/qemu.conf' -e 'HDC')"
-	HDD="$(grep -rnw 'base_arm64/khanh/qemu.conf' -e 'HDD')"
-	CDROM="$(grep -rnw 'base_arm64/khanh/qemu.conf' -e 'CDROM')"
+	DIRECTORY="$(grep -rw 'base_arm64/khanh/qemu.conf' -e 'DIRECTORY')"
+	BIOS="$(grep -rw 'base_arm64/khanh/qemu.conf' -e 'BIOS')"
+	CPU="$(grep -rw 'base_arm64/khanh/qemu.conf' -e 'CPU')"
+	RAM="$(grep -rw 'base_arm64/khanh/qemu.conf' -e 'RAM')"
+	VGA="$(grep -rw 'base_arm64/khanh/qemu.conf' -e 'VGA')"
+	SMP="$(grep -rw 'base_arm64/khanh/qemu.conf' -e 'SMP')"
+	MONITOR="$(grep -rw 'base_arm64/khanh/qemu.conf' -e 'MONITOR')"
+	VNC="$(grep -rw 'base_arm64/khanh/qemu.conf' -e 'VNC')"
+	THREADS="$(grep -rw 'base_arm64/khanh/qemu.conf' -e 'THREADS')"
+	TYPE="$(grep -rw 'base_arm64/khanh/qemu.conf' -e 'TYPE')"
+	MOUSE="$(grep -rw 'base_arm64/khanh/qemu.conf' -e 'MOUSE')"
+	USB1="$(grep -rw 'base_arm64/khanh/qemu.conf' -e 'USB1')"
+	USB2="$(grep -rw 'base_arm64/khanh/qemu.conf' -e 'USB2')"
+	HDA="$(grep -rw 'base_arm64/khanh/qemu.conf' -e 'HDA')"
+	HDB="$(grep -rw 'base_arm64/khanh/qemu.conf' -e 'HDB')"
+	HDC="$(grep -rw 'base_arm64/khanh/qemu.conf' -e 'HDC')"
+	HDD="$(grep -rw 'base_arm64/khanh/qemu.conf' -e 'HDD')"
+	CDROM="$(grep -rw 'base_arm64/khanh/qemu.conf' -e 'CDROM')"
 else
 	echo "config qemu.conf not found!"
 	echo ""
 	exit 0
 fi
-if [ ${TYPE:7:99} != "none" ]; then
-	TYPE1=" -M ${TYPE:7:99}"
+if [ ${TYPE:5:99} != "none" ]; then
+	TYPE1=" -M ${TYPE:5:99}"
 else
 	TYPE1=""
 fi
-if [ ${RAM:7:99} != "none" ]; then
-	RAM1=" -m ${RAM:7:99}"
+if [ ${RAM:4:99} != "none" ]; then
+	RAM1=" -m ${RAM:4:99}"
 else
 	echo "There is no RAM!"
 	echo ""
 	exit 0
 fi
-if [ ${CPU:6:99} != "none" ]; then
-	CPU1=" -cpu ${CPU:6:99}"
+if [ ${CPU:4:99} != "none" ]; then
+	CPU1=" -cpu ${CPU:4:99}"
 else
 	echo "There is no CPU!"
 	echo ""
 	exit 0
 fi
-if [[ ${SMP:7:99} -eq "1" ]] || [[ ${SMP:7:99} -eq "0" ]]; then
+if [[ ${SMP:4:99} -eq "1" ]] || [[ ${SMP:4:99} -eq "0" ]]; then
 	SMP1=" -smp 1"
 else
-	SMP2=${SMP:7:99}
+	SMP2=${SMP:4:99}
 	if [[ $SMP2 -eq 1 ]]; then
 		SMP3=${SMP2}
 	else
@@ -56,84 +56,84 @@ else
 	fi
 	SMP1=" -smp ${SMP3}"
 fi
-if [ ${VGA:7:99} != "none" ]; then
-	VGA1=" -device ${VGA:7:99}"
+if [ ${VGA:4:99} != "none" ]; then
+	VGA1=" -device ${VGA:4:99}"
 else
 	echo "There is no VGA!"
 	echo ""
 	exit 0
 fi
-if [ ${BIOS:7:99} != "none" ]; then
-	BIOS1=" -usb -bios ${BIOS:7:99}"
+if [ ${BIOS:5:99} != "none" ]; then
+	BIOS1=" -usb -bios ${BIOS:5:99}"
 else
 	echo "There are no BIOS!"
 	echo ""
 	exit 0
 fi
-if [ ${MONITOR:11:99} != "none" ]; then
-	MONITOR1=" -monitor ${MONITOR:11:99}"
+if [ ${MONITOR:8:99} != "none" ]; then
+	MONITOR1=" -monitor ${MONITOR:8:99}"
 else
 	MONITOR1=""
 fi
-if [ ${USB11:7:99} != "none" ]; then
-	USB11=" -device ${USB1:7:99}"
+if [[ ${USB11:5:99} != "none" ]]; then
+	USB11=" -device ${USB1:5:99}"
 else
 	USB11=""
 fi
-if [ ${USB21:7:99} != "none" ]; then
-	USB21=" -device ${USB2:7:99}"
+if [[ ${USB21:5:99} != "none" ]]; then
+	USB21=" -device ${USB2:5:99}"
 else
 	USB21=""
 fi
-if [ ${HDA:7:99} != "none" ] 2> /dev/null; then
-	HDA1=" -drive file=${HDA:7:99},format=raw,index=0,media=disk"
+if [ ${HDA:4:99} != "none" ] 2> /dev/null; then
+	HDA1=" -drive file=${HDA:4:99},format=raw,index=0,media=disk"
 else
 	HDA1=""
 fi
-if [ ${HDB:7:99} != "none" ] 2> /dev/null; then
-	HDB1=" -hdb ${HDB:7:99}"
+if [ ${HDB:4:99} != "none" ] 2> /dev/null; then
+	HDB1=" -hdb ${HDB:4:99}"
 else
 	HDB1=""
 fi
-if [ ${HDC:7:99} != "none" ] 2> /dev/null; then
-	HDC1=" -hdc ${HDC:7:99}"
+if [ ${HDC:4:99} != "none" ] 2> /dev/null; then
+	HDC1=" -hdc ${HDC:4:99}"
 else
 	HDC1=""
 fi
-if [ ${HDD:7:99} != "none" ] 2> /dev/null; then
-	HDD1=" -hdd ${HDD:7:99}"
+if [ ${HDD:4:99} != "none" ] 2> /dev/null; then
+	HDD1=" -hdd ${HDD:4:99}"
 else
 	HDD1=""
 fi
-if [ ${CDROM:9:99} != "none" ] 2> /dev/null; then
-	CDROM1=" -cdrom ${CDROM:9:99}"
+if [ ${CDROM:6:99} != "none" ] 2> /dev/null; then
+	CDROM1=" -cdrom ${CDROM:6:99}"
 else
 	CDROM1=""
 fi
-if [[ ${BOOT:7:99} != "c" ]]; then
+if [[ ${BOOT:5:99} != "c" ]]; then
 	BOOT1=" -boot c"
 else
 	BOOT1=" -boot c"
 fi
-if [ ${VNC:7:99} != "none" ]; then
-	VNC1=" -vnc ${VNC:7:99}"
+if [ ${VNC:4:99} != "none" ]; then
+	VNC1=" -vnc ${VNC:4:99}"
 else
 	VNC1=""
 fi
-if [ ${MOUSE:8:99} != "none" ]; then
-	MOUSE1=" -device ${MOUSE:8:99}"
+if [ ${MOUSE:6:99} != "none" ]; then
+	MOUSE1=" -device ${MOUSE:6:99}"
 else
 	MOUSE1=""
 fi
-if [ ${THREADS:11:99} != "none" ]; then
-	THREADS1=" -vnc ${THREADS:11:99}"
+if [ ${THREADS:8:99} != "none" ]; then
+	THREADS1=" -vnc ${THREADS:8:99}"
 else
 	echo "There are no Threads!"
 	echo ""
 	exit 0
 fi
-if [ ${DIRECTORY=12:99} != "none" ]; then
-	DIRECTORY1="${DIRECTORY:12:99}"
+if [ ${DIRECTORY=10:99} != "none" ]; then
+	DIRECTORY1="${DIRECTORY:10:99}"
 else
 	echo "There are no Folder of Base!"
 	echo ""
