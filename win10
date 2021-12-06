@@ -91,7 +91,11 @@ else
 	HDA1=""
 fi
 if [ ${HDB:4:99} != "none" ] 2> /dev/null; then
-	HDB1=" -hdb ${HDB:4:99}"
+	if [ ${HDB:0} == "#" ]; then
+		HDB1=""
+	else
+		HDB1=" -hdb ${HDB:4:99}"
+	fi
 else
 	HDB1=""
 fi
@@ -132,8 +136,8 @@ else
 	echo ""
 	exit 0
 fi
-if [ ${DIRECTORY=10:99} != "none" ]; then
-	DIRECTORY1="${DIRECTORY:10:99}"
+if [ ${DIRECTORY=12:99} != "none" ]; then
+	DIRECTORY1="${DIRECTORY:12:99}"
 else
 	echo "There are no Folder of Base!"
 	echo ""
