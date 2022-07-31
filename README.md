@@ -23,5 +23,5 @@ install
 win10arm
 ```
 
-- Use 'VNC Viewer' connect IP 127.0.0.1:1 or localhost:1
+- Use 'VNC Viewer' connect IP 127.0.0.1:5901 or localhost:5901
 
