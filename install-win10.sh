@@ -17,14 +17,14 @@ pkg update -y && pkg upgrade -y && pkg install p7zip wget tar qemu-system-aarch6
 clear
 cd 2> /dev/null
 printf "\n\n${light_cyan} - Downloading....${green}\n\n"
-wget -q --show-progress -O base_arm64-khanhnguyen.7z.001 "https://github.com/KhanhNguyen9872/Windows10ARM64/releases/download/Win10ARM64Base/base_arm64-khanhnguyen.7z.001"
-wget -q --show-progress -O base_arm64-khanhnguyen.7z.002 "https://github.com/KhanhNguyen9872/Windows10ARM64/releases/download/Win10ARM64Base/base_arm64-khanhnguyen.7z.002"
+wget -q --show-progress -O base_arm64-khanhnguyen.tar.7z.001 "https://github.com/KhanhNguyen9872/Windows10ARM64/releases/download/Win10ARM64Base/base_arm64-khanhnguyen.tar.7z.001"
+wget -q --show-progress -O base_arm64-khanhnguyen.tar.7z.002 "https://github.com/KhanhNguyen9872/Windows10ARM64/releases/download/Win10ARM64Base/base_arm64-khanhnguyen.tar.7z.002"
 wget -q --show-progress -O base_arm64-khanhnguyen.sha512sum "https://github.com/KhanhNguyen9872/Windows10ARM64/releases/download/Win10ARM64Base/base_arm64-khanhnguyen.sha512sum" 2> /dev/null
 
 # extract file
 clear
 printf "\n\n${light_cyan} - Extracting....${green}\n\n"
-7z x base_arm64-khanhnguyen.7z.001 -aoa > /dev/null
+7z x base_arm64-khanhnguyen.tar.7z.001 -aoa > /dev/null
 rm -f base_arm64-khanhnguyen.7z* 2> /dev/null
 
 # Verify base file
