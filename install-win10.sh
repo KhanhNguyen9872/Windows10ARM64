@@ -7,6 +7,9 @@ blue='\033[1;34m'
 light_cyan='\033[1;96m'
 reset='\033[0m'
 
+cd 2> /dev/null
+echo "Y" | termux-setup-storage > /dev/null
+
 # Update package
 pkg update -y && pkg upgrade -y && pkg install p7zip wget tar qemu-system-aarch64-headless -y
 
@@ -46,12 +49,12 @@ else
 	exit 1
 fi
 cd 2> /dev/null
-wget -O win10 "https://raw.githubusercontent.com/KhanhNguyen9872/Windows10ARM64/main/win10" 2> /dev/null
+wget -O win10arm "https://raw.githubusercontent.com/KhanhNguyen9872/Windows10ARM64/main/win10" 2> /dev/null
 
 # Configuring base
 printf "\n\n${light_cyan} - Configuring base.....${green}\n\n"
-mv win10 ${PREFIX}/bin/win10 2> /dev/null
-chmod 777 ${PREFIX}/bin/win10 2> /dev/null
+mv win10arm /data/data/com.termux/files/usr/bin/win10arm 2> /dev/null
+chmod 777 /data/data/com.termux/files/usr/bin/win10arm 2> /dev/null
 chmod 777 base_arm64 2> /dev/null
 if [ -f base_arm64/khanh/base_arm64.qcow2 ] 2> /dev/null; then
 	if [ -f base_arm64/khanh/BIOS.img ] 2> /dev/null; then
@@ -69,13 +72,13 @@ fi
 clear
 if [[ $success -eq 1 ]] 2> /dev/null; then
 	printf "\n ${yellow} - INSTALL COMPLETED!\n"
-	printf "${light_cyan} You can run 'win10' to start Windows10ARM64\n"
-	printf "\n${yellow} - Use 'VNC Viewer' to connect 127.0.0.1:1\n${reset}"
+	printf "${light_cyan} You can run 'win10arm' to start Windows10ARM64\n"
+	printf "\n${yellow} - Use 'VNC Viewer' to connect 127.0.0.1:5901\n${reset}"
 	exit 0
 else
 	printf "\n ${red} - INSTALL FAILED!\n"
 	printf "${light_cyan} Please try again!\n"
-	rm -f ${PREFIX}/bin/win10 2> /dev/null
+	rm -f /data/data/com.termux/files/usr/bin/win10arm 2> /dev/null
 	rm -rf base_arm64 2> /dev/null
 	exit 1
 fi
