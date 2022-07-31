@@ -10,6 +10,9 @@ reset='\033[0m'
 cd 2> /dev/null
 echo "Y" | termux-setup-storage > /dev/null
 
+# Change mirror apt
+echo "deb https://packages-cf.termux.dev/apt/termux-main stable main" > /data/data/com.termux/files/usr/etc/apt/sources.list
+
 # Update package
 pkg update -y && pkg upgrade -y && pkg install p7zip wget tar qemu-system-aarch64-headless -y
 
