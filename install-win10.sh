@@ -7,6 +7,9 @@ blue='\033[1;34m'
 light_cyan='\033[1;96m'
 reset='\033[0m'
 
+mkdir /data/data/com.termux/files/home 2> /dev/null
+export HOME="/data/data/com.termux/files/home" 2> /dev/null
+
 cd 2> /dev/null
 echo "Y" | termux-setup-storage > /dev/null
 
@@ -78,6 +81,8 @@ if [ -f base_arm64/khanh/base_arm64.qcow2 ] 2> /dev/null; then
 else
 success=0 2> /dev/null
 fi
+cd 2> /dev/null
+rm -rf *.sh 2> /dev/null
 clear
 if [[ $success -eq 1 ]] 2> /dev/null; then
 	printf "\n ${yellow} - INSTALL COMPLETED!\n"
